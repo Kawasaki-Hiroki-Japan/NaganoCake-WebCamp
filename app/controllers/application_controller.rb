@@ -17,5 +17,13 @@ class ApplicationController < ActionController::Base
         admin_items_path
     end
   end
+  def after_sign_out_path_for(resource)
+    if resource == :end_user
+      new_end_user_session_path
+    else
+      new_admin_session_path
+    end
+    # new_end_user_session_path
+  end
 
 end
