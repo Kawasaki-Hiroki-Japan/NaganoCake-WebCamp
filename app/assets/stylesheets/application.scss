@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import "variable";
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  color: black;
+  font-size: 100%;
+  font: inherit;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+}
+body{
+  background-color: #fff3b8;
+}
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+h1{
+  font-size: 60px;
+  font-weight: bold;
+  margin: 30px;
+  text-align: center;
+}
+a{
+  text-decoration: none;
+
+  &.underline{
+    text-decoration: underline;
+  }
+  &.underline:hover{
+    color: red;
+  }
+}
+p{
+  text-indent: 1em;
+
+  &.center{
+    text-align: center;
+    text-indent: 0;
+  }
+}
+ul{
+  display: block;
+  list-style-type: disc;
+	list-style: none;
+
+  &.ten{
+    list-style: initial;
+    text-align: left;
+  }
+}
+ol{
+  text-align: left;
+}
+br{
+  clear: left;
+}
+hr{
+  height: 2px;
+  margin: 10px 30px;
+  background-color: black;
+}
+
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+header{
+  background-color: red;
+  min-height: 70px;
+  margin: 0;
+  display: flex;
+
+  h1.navbar-brand{
+    color: black;
+    font-size: 2rem;
+    border: 3px solid black;
+    background-color: white;
+    width: 12rem;
+  }
+  ul a{
+    font-size: 1.25rem;
+    color: black;
+    font-weight: bold;
+
+    &:hover{
+      color: white;
+    }
+  }
+}
+main{
+  min-height: -webkit-calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
+  padding: 50px 0;
+}
+footer{
+}
+
+.user_form{
+  background-color: white;
+  padding: 40px;
+  border-radius: 40px;
+  border: 10px solid red;
+  h3{
+    display: block;
+    margin: auto;
+    font-size: 1.5rem;
+  }
+}
