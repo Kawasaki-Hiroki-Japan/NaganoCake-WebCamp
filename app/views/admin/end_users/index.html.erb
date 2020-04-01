@@ -1,0 +1,31 @@
+<main id="index">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h3 class="mb-3">会員一覧画面</h3>
+        <table  class="table">
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+          <% @end_user.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.first_name + user.last_name %></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.status == true %>
+                  有効
+                <% else %>
+                  退会済
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
