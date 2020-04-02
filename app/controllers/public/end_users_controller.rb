@@ -16,7 +16,6 @@ class Public::EndUsersController < ApplicationController
   end
   def destroy
     end_user = current_end_user
-    end_user.update(status: :false)
     end_user.destroy
     redirect_to new_end_user_session_path
   end

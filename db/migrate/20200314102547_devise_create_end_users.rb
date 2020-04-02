@@ -39,7 +39,6 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :postal_code, null: false, default: "0000000"
       t.string :address, null: false, default: "0000000"
       t.string :phone_number, null: false, default: "00000000000"
-      t.boolean :status, null: false, default: true
 
       t.timestamps null: false
     end

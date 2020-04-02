@@ -16,7 +16,7 @@
               <td><%= user.first_name + user.last_name %></td>
               <td><%= user.email %></td>
               <td>
-                <% if user.status == true %>
+                <% if user.deleted? == false %>
                   有効
                 <% else %>
                   退会済

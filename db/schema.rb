@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_04_01_064958) do
     t.string "postal_code", default: "0000000", null: false
     t.string "address", default: "0000000", null: false
     t.string "phone_number", default: "00000000000", null: false
-    t.boolean "status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
