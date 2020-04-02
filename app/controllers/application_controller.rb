@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   end
   def after_sign_in_path_for(resource)
     case resource
-      when EndUsers
-        end_user_path(resouce)
+      when EndUser
+        end_user_path
       when Admin
         admin_items_path
     end
@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
     else
       new_admin_session_path
     end
-    # new_end_user_session_path
   end
 
 end

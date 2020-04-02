@@ -66,3 +66,5 @@ gem 'jquery-rails'
 gem 'devise', '4.4.3'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+gem 'paranoia'
