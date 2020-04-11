@@ -1,0 +1,50 @@
+<main id="new">
+  <div class="container">
+    <h2>商品 新規登録画面</h2>
+    <%= render "layouts/error_check", model: @item %>
+    <%= form_for(@item, url: "/admin/items") do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <div class="field image">
+              <div id="img_field"></div>
+              <%= f.file_field :image, class: "image", style: "display:none;", id: "file" %>
+              <div class="btn btn-info col-md-10 offset-md-1 mt-2" onClick="$('#file').click()">
+                画像選択
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row field">
+            <%= f.label "商品名", class: "col-md-3" %>
+            <%= f.text_field :name, class: "col-md-9" %>
+          </div>
+          <div class="row field">
+            <%= f.label "商品説明", class: "col-md-3" %>
+            <%= f.text_area :body, class: "col-md-9" %>
+          </div>
+          <div class="row field">
+            <%= f.label "ジャンル", class: "col-md-3" %>
+            <div class="select col-md-9">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+            </div>
+          </div>
+          <div class="row field">
+            <%= f.label "税抜価格", class: "col-md-3" %>
+            <%= f.text_field :price, class: "col-md-8" %><span class="ml-1 mt-auto">円</span>
+          </div>
+          <div class="row field">
+            <span class="col-md-3">販売<br>ステータス</span>
+            <div class="select col-md-9">
+              <%= f.select :status, [["販売中", true],["売切れ", false]] %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit "新規登録", class: "btn btn-info col-md-10 offset-md-1 add" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</main>

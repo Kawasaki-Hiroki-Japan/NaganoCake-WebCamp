@@ -8,7 +8,7 @@
         <li class="nav-item"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "nav-link" %></li>
       <% elsif admin_signed_in? %>
         <li class="nav-item"><%= link_to "受注一覧", "", class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "商品登録", "", class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "商品登録", admin_new_item_path, data: {turbolinks: false}, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
       <% else %>
         <li class="nav-item"><%= link_to "会員登録", new_end_user_registration_path, class: "nav-link" %></li>

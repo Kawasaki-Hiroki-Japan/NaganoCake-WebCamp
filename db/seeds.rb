@@ -6,8 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# coding: utf-8
+
 admin = Admin.new(
   email: "admin@nagano.cake.com",
   password: "nagano-cake"
 )
 admin.save!
+Genre.create(name: "ケーキ", status: true)
+Genre.create(name: "プリン", status: true)
+Genre.create(name: "焼き菓子", status: true)
+Genre.create(name: "キャンディ", status: true)

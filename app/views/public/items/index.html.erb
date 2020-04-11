@@ -1,0 +1,49 @@
+<main id="index">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div id="genre-box">
+          <p class="center">ジャンル検索</p>
+          <hr>
+          <ul>
+            <li><%= link_to "全商品", items_path %></li>
+            <% @genre.each do |g| %>
+              <% if g.status == true %>
+                <li><%= link_to g.name, items_path(genre_id: g.id) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9" id="index-box">
+        <% if params[:genre_id] %>
+          <h2><%= @genre.find(params[:genre_id]).name %>一覧
+            <span>（全<%= @items.where(status: true).where(genre_id: params[:genre_id]).count %>件）</span>
+          </h2>
+          <% @items.where(genre_id: params[:genre_id]).each do |item| %>
+            <% if item.status == true %>
+              <div class="item-box">
+                <%= attachment_image_tag item, :image, :fill, 150, 90, fallback: "no_image_mini.jpg" %><br>
+                <p><%= item.name %></p>
+                <p>￥<%= item.price %></p>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <h2>商品一覧
+            <span>（全<%= @items.where(status: true).count %>件）</span>
+          </h2>
+          <% @items.each do |item| %>
+              <% if item.status == true %>
+                <div class="item-box">
+                  <%= attachment_image_tag item, :image, :fill, 150, 90, fallback: "no_image_mini.jpg" %><br>
+                  <p><%= item.name %></p>
+                  <p>￥<%= item.price %></p>
+                </div>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
