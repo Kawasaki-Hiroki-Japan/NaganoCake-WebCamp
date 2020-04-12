@@ -36,8 +36,11 @@
           </div>
           <div class="row field">
             <span class="col-md-3">販売<br>ステータス</span>
-            <div class="select col-md-9">
-              <%= f.select :status, [["販売中", true],["売切れ", false]] %>
+            <div class="redio_area col-md-9">
+              <%= f.radio_button :status, true %>
+              <%= f.label "status_true", "販売中", class: "mr-3" %>
+              <%= f.radio_button :status, false %>
+              <%= f.label "status_false", "売切れ" %>
             </div>
           </div>
         </div>
