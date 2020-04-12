@@ -1,0 +1,48 @@
+<main id="index">
+  <div class="container">
+    <div class="row">
+      <h3>ショッピングカート</h3>
+      <%= link_to "カートを空にする", cart_empty_path, method: :delete, class: "btn btn-danger ml-auto" %>
+      <div class="col-md-12">
+        <div class="row">
+          <table class="table table-index col-md-12 mt-4">
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+            </tr>
+            <% current_end_user.cart_items.each do |item| %>
+              <%= form_for(item, url: "/end_users/cart/items/#{item.id}") do |f| %>
+                <tr>
+                  <td>
+                    <%= attachment_image_tag item.item, :image, :fill, 45, 30, class: "mr-2" %>
+                    <%= item.item.name %>
+                  </td>
+                  <td><%= (item.item.price*1.1).to_i %></td>
+                  <td>
+                    <%= f.text_field :amount %>
+                    <%= f.submit "変更", class: "btn btn-info btn-sm ml-2" %>
+                  </td>
+                  <td><%= (item.item.price*1.1).to_i * item.amount %></td>
+                  <td><%= link_to "削除する", "/end_users/cart/items/#{item.id}", method: :delete, class: "btn btn-danger" %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+        <div class="row">
+          <%= link_to "買い物を続ける", items_path, class: "btn btn-info col-md-2" %>
+          <table class="table table-sum offset-md-5 col-md-5">
+            <tr>
+              <th>合計金額</th>
+              <td><%= @sum %></td>
+            </tr>
+          </table>
+        </div>
+        <%= link_to "情報入力に進む", "", class: "btn btn-info offset-md-4 col-md-4 mt-2" %>
+      </div>
+    </div>
+  </div>
+</main>

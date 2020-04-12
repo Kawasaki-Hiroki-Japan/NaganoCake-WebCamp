@@ -1,0 +1,30 @@
+// Place all the styles related to the public/cart_items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#index{
+  table .table-index{
+    th{
+      width: 15%;
+    }
+    th:nth-child(1){
+      width: 40%;
+    }
+  }
+  input[type="text"]{
+    background: white;
+    border: 1px solid black;
+    width: 50%;
+
+    &:focus{
+      outline: none
+    }
+  }
+  .row a.btn{
+    height: 40px;
+    line-height: 28px;
+  }
+  table.table-sum{
+    th{ width: 50%; }
+  }
+}
