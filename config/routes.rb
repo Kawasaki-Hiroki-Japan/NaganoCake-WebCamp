@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     patch 'end_users' => 'end_users#update', as: 'update_end_user'
     get 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
     delete 'end_users' => 'end_users#destroy', as: 'destroy_end_user'
+    get 'end_users/items' => 'items#index', as: 'items'
+    get 'end_users/items/[:name]' => 'items#index_genre'
   end
 
   devise_for :admins, skip: :all
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'items' => 'items#index', as: 'items'
+    get 'items/new' => 'items#new', as: 'new_item'
+    post 'items' => 'items#create', as: 'create_item'
     get 'end_users' => 'end_users#index', as: 'end_users'
   end
 end

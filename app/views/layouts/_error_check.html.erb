@@ -1,0 +1,17 @@
+<% if model.errors.any? %>
+  <div class="msgBox">
+    <div>
+      <% n = model.errors.count %>
+      <% if n == 1 %>
+        1 error prohibited this from being saved:
+      <% else %>
+        <%= n %> errors prohibited this from being saved:
+      <% end %>
+    </div>
+    <ul>
+      <% model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
