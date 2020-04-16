@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     get 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
     delete 'end_users' => 'end_users#destroy', as: 'destroy_end_user'
     get 'end_users/items' => 'items#index', as: 'items'
-    get 'end_users/items/[:name]' => 'items#index_genre'
+    get 'end_users/items/:id' => 'items#show', as: 'item'
+    get 'end_users/cart' => 'cart_items#index', as: 'cart'
+    post 'end_users/items/:id' => 'cart_items#create', as: 'cart_add_item'
+    patch 'end_users/cart/items/:id' => 'cart_items#update', as: 'cart_item'
+    delete 'end_users/cart/items/:id' => 'cart_items#item_destroy', as: 'cart_delete_item'
+    delete 'end_users/cart' => 'cart_items#destroy', as: 'cart_empty'
   end
 
   devise_for :admins, skip: :all

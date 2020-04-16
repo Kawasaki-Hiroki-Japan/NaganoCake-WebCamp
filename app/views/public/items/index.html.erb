@@ -15,7 +15,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-9" id="index-box">
+      <div class="col-md-9">
         <% if params[:genre_id] %>
           <h2><%= @genre.find(params[:genre_id]).name %>一覧
             <span>（全<%= @items.where(status: true).where(genre_id: params[:genre_id]).count %>件）</span>
@@ -24,7 +24,7 @@
             <% if item.status == true %>
               <div class="item-box">
                 <%= attachment_image_tag item, :image, :fill, 150, 90, fallback: "no_image_mini.jpg" %><br>
-                <p><%= item.name %></p>
+                <p><%= link_to item.name, item_path(item) %></p>
                 <p>￥<%= item.price %></p>
               </div>
             <% end %>
@@ -37,7 +37,7 @@
               <% if item.status == true %>
                 <div class="item-box">
                   <%= attachment_image_tag item, :image, :fill, 150, 90, fallback: "no_image_mini.jpg" %><br>
-                  <p><%= item.name %></p>
+                  <p><%= link_to item.name, item_path(item) %></p>
                   <p>￥<%= item.price %></p>
                 </div>
               <% end %>
