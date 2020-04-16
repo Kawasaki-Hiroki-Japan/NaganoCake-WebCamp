@@ -1,5 +1,8 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :unsettled_order!
+  before_action :cart_item?, only: [:index]
+  before_action :item_added?, only: [:create]
 
   def index
     @sum = 0;
@@ -11,7 +14,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
     @cart_item.item_id = params[:id]
-    if @cart_item.save
+    if @cart_item.save()
       redirect_to cart_path
     else
       redirect_to item_path(params[:id])
@@ -34,7 +37,7 @@ class Public::CartItemsController < ApplicationController
     current_end_user.cart_items.each do |item|
       item.delete
     end
-    redirect_to cart_path
+    redirect_to items_path, notice: "カートを空にしました。"
   end
 
   private

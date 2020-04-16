@@ -37,7 +37,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :first_kana, null: false, default: "ななしの"
       t.string :last_kana, null: false, default: "ごんべ"
       t.string :postal_code, null: false, default: "0000000"
-      t.string :address, null: false, default: "0000000"
+      t.string :address, null: false, default: "日本東京都渋谷区神南◯◯◯"
       t.string :phone_number, null: false, default: "00000000000"
 
       t.timestamps null: false

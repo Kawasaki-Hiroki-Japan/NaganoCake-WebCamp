@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_102127) do
+ActiveRecord::Schema.define(version: 2020_04_15_121133) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_102127) do
     t.string "first_kana", default: "ななしの", null: false
     t.string "last_kana", default: "ごんべ", null: false
     t.string "postal_code", default: "0000000", null: false
-    t.string "address", default: "0000000", null: false
+    t.string "address", default: "日本東京都渋谷区神南◯◯◯", null: false
     t.string "phone_number", default: "00000000000", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,6 +81,38 @@ ActiveRecord::Schema.define(version: 2020_04_12_102127) do
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_items_on_genre_id"
     t.index ["name"], name: "index_items_on_name", unique: true
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "item_id", null: false
+    t.integer "price", null: false
+    t.integer "amount", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "end_user_id", null: false
+    t.string "name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.integer "pay_way", null: false
+    t.integer "postage", null: false
+    t.integer "total_price", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "end_user_id", null: false
+    t.string "name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
