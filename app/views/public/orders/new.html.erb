@@ -1,0 +1,63 @@
+<main id="new">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>購入情報入力</h3>
+        <%= render "layouts/error_check", model: @order %>
+        <%= render "layouts/error_check", model: @item %>
+        <%= form_for(@order, url: create_order_path) do |f| %>
+          <h4 class="mt-3">支払い方法</h4>
+          <div class="row">
+            <% Order.pay_ways_i18n.invert.keys.each do |pay| %>
+              <div class="offset-md-1 col-md-11">
+                <%= f.radio_button :pay_way, Order.pay_ways_i18n.invert[pay], class: "mr-3", id: "order_pay_way_#{pay}" %>
+                <%= f.label :pay_way, pay, for: "order_pay_way_#{pay}" %>
+              </div>
+            <% end %>
+          </div>
+          <h4 class="mt-3">お届け先</h4>
+          <div class="row">
+            <div class="offset-md-1 col-md-11 mb-4">
+              <input type="radio" name="flag" value="1" class="mr-3", id="address_1", checked>
+              <label for="address_1">ご自身の住所</label>
+              <div class="address-box">
+                <%= "〒 "+current_end_user.postal_code.slice(0,3)+"-"+current_end_user.postal_code.slice(3,7)+"　"+current_end_user.address %>
+                <br>
+                <%= current_end_user.first_name+"　"+current_end_user.last_name %>
+              </div>
+            </div>
+            <div class="offset-md-1 col-md-11 mb-4">
+              <input type="radio" name="flag" value="2" class="mr-3", id="address_2">
+              <label for="address_2">登録済住所から選択</label>
+              <div class="select" style="height: 2rem">
+                <select name="address">
+                  <option value="">選択してください</option>
+                  <% @address.each do |add| %>
+                    <option value="<%= add.id %>">
+                      <%= "〒 "+add.postal_code.slice(0,3)+"-"+add.postal_code.slice(3,7)+"　"+add.address+"　"+add.name %>
+                    </option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
+            <div class="offset-md-1 col-md-11 mb-4">
+              <input type="radio" name="flag" value="3" class="mr-3", id="address_3">
+              <label for="address_3">新しいお届け先</label><br>
+              <div class="mt-2">
+                <%= f.label :postal_code, "郵便番号", class: "col-md-2" %>
+                <%= f.text_field :postal_code %> ハイフンなし<br>
+                <%= f.label :address, "住所", class: "col-md-2" %>
+                <%= f.text_field :address, class: "col-md-9" %><br>
+                <%= f.label :name, "宛名", class: "col-md-2" %>
+                <%= f.text_field :name %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <%= f.submit "確認画面へ進む", class: "btn btn-info offset-md-4 col-md-4" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

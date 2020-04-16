@@ -24,5 +24,23 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
     end
   end
-
+  def cart_item?
+    redirect_to items_path, notice: "カートが空です。" unless CartItem.find_by(end_user_id: current_end_user.id)
+  end
+  def item_added?
+    redirect_to item_path(params[:id]), notice: "既にこの商品はカートに入っています。" if CartItem.where(end_user_id: current_end_user.id).find_by(item_id: params[:id])
+  end
+  def unsettled_order?
+    redirect_to cart_path unless Order.where(status: 0).find_by(end_user_id: current_end_user.id)
+  end
+  def unsettled_order!
+    redirect_to verification_order_path, notice: "未確定の注文があります。" if Order.where(status: 0).find_by(end_user_id: current_end_user.id)
+  end
+  def complete_order?
+    if Order.find_by(params[:id]) == false
+      redirect_to admin_orders_path, notice: "注文IDが異なります。"
+    elsif Order.find(params[:id]).status == 0
+      redirect_to admin_orders_path, notice: "注文IDが異なります。"
+    end
+  end
 end

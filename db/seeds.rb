@@ -13,6 +13,11 @@ admin = Admin.new(
   password: "nagano-cake"
 )
 admin.save!
+end_user = EndUser.new(
+  email: "admin@nagano.cake.com",
+  password: "nagano-cake"
+)
+end_user.save!
 Genre.create(name: "ケーキ", status: true)
 Genre.create(name: "プリン", status: true)
 Genre.create(name: "焼き菓子", status: true)
