@@ -3,7 +3,11 @@ class Public::ItemsController < ApplicationController
   before_action :end_user_item_restriction, only: [:show]
 
   def index
-    @items = Item.all
+    if params[:keyword].blank?
+      @items = Item.all
+    else
+      @items = Item.keyword(params[:keyword])
+    end
     @genre = Genre.all
   end
   def show

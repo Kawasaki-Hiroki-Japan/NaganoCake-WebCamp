@@ -18,4 +18,12 @@
       <% end %>
     </ul>
   </div>
+  <% if end_user_signed_in? %>
+  <div class="collapse navbar-collapse Search-form">
+    <form action="/end_users/items" method="get" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" autocomplete>
+      <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  <% end %>
 </header>

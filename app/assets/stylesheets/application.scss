@@ -114,6 +114,11 @@ header{
       color: white;
     }
   }
+  .Search-form{
+    position: absolute;
+    top: 90px;
+    right: 30px;
+  }
 }
 main{
   min-height: -webkit-calc(100vh - 100px);
