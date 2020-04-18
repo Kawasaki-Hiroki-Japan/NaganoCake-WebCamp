@@ -70,3 +70,4 @@ gem "refile-mini_magick"
 
 gem 'paranoia'
 gem 'enum_help'
+gem 'search_cop'
